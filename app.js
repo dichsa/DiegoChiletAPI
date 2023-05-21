@@ -12,6 +12,7 @@ const conexion = mysql.createConnection({
     password:'Diego1234',
     database:'blog'
 });
+
 app.listen(3000, function () {
     console.log('La aplicación está escuchando en el puerto 3000!');
 });
