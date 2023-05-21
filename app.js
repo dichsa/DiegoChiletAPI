@@ -21,7 +21,6 @@ app.listen(3000, function () {
 app.get('/api/posts', (req, res) => {
     const sql = 'SELECT *,  autores.nombre AS autor_nombre, autores.email AS autor_email, autores.imagen AS autor_imagen FROM posts JOIN autores';
 
-
     conexion.query(sql, (error, results) => {
         if(error) {
             console.log('Error recuperando posts:', error);
@@ -49,7 +48,7 @@ app.get('/api/autores', (req, res) => {
 // Obtener un post
 app.get('/api/:id', (req, res) => {
     const { id } = req.params;
-    const sql = 'SELECT posts.*, autores.nombre AS autor_nombre, autores.email AS autor_email, autores.imagen AS autor_imagen FROM posts JOIN autores ON posts.id_autor = autores.id_autor WHERE posts.id_post = ?';
+    const sql = 'SELECT posts.*, autores.nombre, autores.email, autores.imagen FROM posts JOIN autores ON posts.id_autor = autores.id_autor WHERE posts.id_post = ?';
 
     conexion.query(sql, [id], (error, results) => {
         if(error) {
